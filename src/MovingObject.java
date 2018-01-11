@@ -1,9 +1,17 @@
 
 public abstract class MovingObject {
-	private int speed, direction, distanceTravelled;
+	private double speed;
+	private int direction, distanceTravelled;
 	
-	public void move(int speed, int direction)
-	{}
+	public double[] move(int speed, int direction)
+	{
+		double[] result = new double[2];
+		
+		result[0] = speed * Math.cos(Math.toRadians(direction));
+		result[1] = speed * Math.sin(Math.toRadians(direction));
+		
+		return result;
+	}
 	
 	public void fadeAway()
 	{}
