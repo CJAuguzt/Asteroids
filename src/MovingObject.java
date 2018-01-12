@@ -5,11 +5,23 @@ public class MovingObject {
 	private float vx;
 	private float vy;
 	private float distanceTravelled;
+	private boolean exists;
 	
 	public void move()
 	{
 		x += vx;
 		y += vy;
+	}
+	
+	public MovingObject(float x, float y, float vx, float vy, float direction)
+	{
+		this.x = x;
+		this.y = y;
+		this.vx = vx;
+		this.vy = vy;
+		this.direction = direction;
+		this.distanceTravelled = 0;
+		this.exists = true;
 	}
 	
 	public void fadeAway()
@@ -64,5 +76,15 @@ public class MovingObject {
 	public void setDirection(float in)
 	{
 		direction = in;
+	}
+	
+	public boolean getExists()
+	{
+		return exists;
+	}
+	
+	public void setExists(boolean in)
+	{
+		exists = in;
 	}
 }
