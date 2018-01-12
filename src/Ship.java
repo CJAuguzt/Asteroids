@@ -1,6 +1,7 @@
 
 public class Ship extends MovingObject{
 	private static int maxSpeed;
+	private float acceleration;
 	
 	void shoot(int direction)
 	{}
@@ -19,4 +20,14 @@ public class Ship extends MovingObject{
 	
 	void respawn()
 	{}
+	
+	public float getAcceleration()
+	{
+		return acceleration;
+	}
+	
+	public void setAcceleration(float in)
+	{
+		acceleration = in;
+	}
 }
