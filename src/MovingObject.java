@@ -1,19 +1,71 @@
-
-public abstract class MovingObject {
-	private double speed;
-	private int direction, distanceTravelled;
+public class MovingObject {
+	private float direction;
+	private float x;
+	private float y;
+	private float vx;
+	private float vy;
+	private float distanceTravelled;
 	
-	public double[] move(int speed, int direction)
+	public void move()
 	{
-		double[] result = new double[2];
-		
-		result[0] = speed * Math.cos(Math.toRadians(direction));
-		result[1] = speed * Math.sin(Math.toRadians(direction));
-		
-		return result;
+		x += vx;
+		y += vy;
 	}
 	
 	public void fadeAway()
 	{}
+<<<<<<< HEAD
 	public abstract void Break();
+=======
+	
+	public float getX()
+	{
+		return x;
+	}
+	
+	public void setX(float in)
+	{
+		x = in;
+	}
+	
+	public float getY()
+	{
+		return y;
+	}
+	
+	public void setY(float in)
+	{
+		y = in;
+	}
+	
+	public float getVX()
+	{
+		return vx;
+	}
+	
+	public void setVX(float in)
+	{
+		vx = in;
+	}
+	
+	public float getVY()
+	{
+		return vy;
+	}
+	
+	public void setVY(float in)
+	{
+		vy = in;
+	}
+	
+	public float getDirection()
+	{
+		return direction;
+	}
+	
+	public void setDirection(float in)
+	{
+		direction = in;
+	}
+>>>>>>> origin/master
 }
