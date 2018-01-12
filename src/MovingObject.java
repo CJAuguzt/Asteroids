@@ -15,4 +15,5 @@ public abstract class MovingObject {
 	
 	public void fadeAway()
 	{}
+	public abstract void Break();
 }
