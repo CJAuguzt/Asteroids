@@ -2,29 +2,29 @@
  * CJA 1/11/2018
  */
 import javax.swing.JFrame;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-//import java.awt.Image;
-import javax.swing.JPanel;
-public class Board {
-	ImageIcon background;
-	JLabel label1; 
-	
+import javax.swing.ImageIcon;
+//used for Board constructor
+//import java.io.*; 
+//import javax.imageio.*;
+//used for debugging
+public class Board extends JFrame {
+	ImageIcon icon;
 	public Board() {
-		JFrame jf = new JFrame("Asteroids");
-	        jf.setVisible(true);
-	        jf.setSize(1920,1040);
-	        jf.setResizable(true);
-	        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	        ImageIcon img = new ImageIcon(getClass().getResource("S1V2.png"));
-	        jf.setIconImage(img.getImage());	
+			setTitle("Asteroids");
+	        setResizable(true);
+	        icon = new ImageIcon("Images/Ship/S1V2.png");
+	        setIconImage(icon.getImage());
+	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	        //Debugging
+	        //try {
+	        //setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("Images/menu/MainMenu1.png")))));
+	        //}catch(IOException e)
+	        //{
+	        //	System.out.println("Image Doesn't Exist");
+			//}
+	        setContentPane(new JLabel(new ImageIcon("Images/menu/MainMenu1.png")));
+	        setSize(1920,1080);
 	        
-	        JLabel jl = new JLabel();
-	        jl.setIcon(new ImageIcon(getClass().getResource("Background.png")));
-	        JPanel jp = (JPanel)jf.getContentPane();
-
-	        jp.add(jl);
-	        
-	        //sets Image Icon        
-	    }
 	}
+}
