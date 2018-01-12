@@ -1,9 +1,8 @@
 public class SmAsteroid extends MovingObject{
-	public SmAsteroid(float vx, float vy) {
-		this.vx = vx;
-		this.vy = vy;
+	public SmAsteroid(float x, float y, float vx, float vy, float direction, boolean exists) {
+		super(x, y, vx, vy, direction, exists);
 	}
 	public void Break() {
-		//delet
+		setExists(false);
 	}
 }

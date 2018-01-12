@@ -14,9 +14,7 @@ public class MovingObject {
 	
 	public void fadeAway()
 	{}
-<<<<<<< HEAD
-	public abstract void Break();
-=======
+	public void Break() {};
 	
 	public float getX()
 	{
@@ -67,5 +65,4 @@ public class MovingObject {
 	{
 		direction = in;
 	}
->>>>>>> origin/master
 }
