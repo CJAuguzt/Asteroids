@@ -11,9 +11,12 @@ import javax.swing.ImageIcon;
 //import java.io.*; 
 //import javax.imageio.*;
 //used for debugging
-public class Board extends JFrame {
+public class Board extends JFrame
+{
 	static boolean inBoard = false;
-
+	public static final int WIDTH = 1920;
+	public static final int HEIGHT = 1080;
+	
 	public Board() {
 		prepMenu();
 		inBoard = true;

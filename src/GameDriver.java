@@ -1,5 +1,7 @@
 import java.util.Scanner;
 public class GameDriver {
+	
+	
 	public static void main (String []args) {
 		//creates new instance of the Board to start game
 		Board menu = new Board();
@@ -41,4 +43,3 @@ public class GameDriver {
 	}
 
 }
-

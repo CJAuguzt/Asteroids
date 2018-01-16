@@ -1,16 +1,26 @@
-public class MovingObject {
-	private float direction;
-	private float x;
-	private float y;
-	private float vx;
-	private float vy;
-	private float distanceTravelled;
-	private boolean exists;
+public class MovingObject
+{
+	public float direction;
+	public float x;
+	public float y;
+	public float vx;
+	public float vy;
+	public boolean exists;
 	
 	public void move()
 	{
-		x += vx;
-		y += vy;
+		x += (vx * Math.cos(Math.toRadians(direction)));
+		y += (vy * Math.sin(Math.toRadians(direction)));
+		this.wrap();
+	}
+	
+	public void wrap()
+	{
+		if(this.x > 1920 || this.x < 0 || this.y > 1080 || this.y < 0)
+		{
+			this.x = (1920-x);
+			this.y = (1080-y);
+		}
 	}
 	
 	public MovingObject(float x, float y, float vx, float vy, float direction)
@@ -20,13 +30,8 @@ public class MovingObject {
 		this.vx = vx;
 		this.vy = vy;
 		this.direction = direction;
-		this.distanceTravelled = 0;
 		this.exists = true;
 	}
-	
-	public void fadeAway()
-	{}
-	public void Break() {};
 	
 	public float getX()
 	{
