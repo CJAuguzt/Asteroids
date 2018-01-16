@@ -1,10 +1,10 @@
 public class LgAsteroid extends MovingObject{
-	public LgAsteroid(float x, float y, float vx, float vy, float direction, boolean exists) {
-		super(x, y, vx, vy, direction, exists);
+	public LgAsteroid(float x, float y, float vx, float vy, float direction) {
+		super(x, y, vx, vy, direction);
 	}
 	public void Break() {
-		//delet
-		new MedAsteroid((float)(Math.random()*7)-6, (float)(Math.random()*7)-6);
-		new MedAsteroid((float)(Math.random()*7)-6, (float)(Math.random()*7)-6);
+		setExists(false);
+		new MedAsteroid(this.getX(), this.getY(), (float)Math.random(), (float)Math.random(), (float)0);
+		new MedAsteroid(this.getX(), this.getY(), (float)Math.random(), (float)Math.random(), (float)0);
 	}
 }

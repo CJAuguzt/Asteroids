@@ -8,16 +8,17 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.event.KeyEvent;
 
-
-public class Board extends JFrame {
-	static boolean inBoard;
-	static int keyValue;
-
+//used for Board constructor
+//import java.io.*; 
+//import javax.imageio.*;
+//used for debugging
+public class Board extends JFrame
+{
+	static boolean inBoard = false;
 	public Board() {
 		prepMenu();
 		if (inBoard == false) prepGame();
 	}
-	
 	public void prepMenu() {
 		inBoard = true;
 		setVisible(true);
