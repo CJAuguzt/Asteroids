@@ -50,8 +50,6 @@ public class GameDriver {
 		livesRemaining++;
 	}
 
-<<<<<<< HEAD
-=======
 	int wave = 1; // starts at wave 1, with set number of Asteroids to begin with
 	ArrayList<MovingObject> Asteroids = new ArrayList<MovingObject>();
 	while(wave != 0) {
@@ -62,7 +60,6 @@ public class GameDriver {
 			}
 		}
 	}
->>>>>>> origin/master
 	void startWave() {
 		while(Asteroids.size()<3+wave) {
 			Asteroids.add(new LgAsteroid());
