@@ -14,6 +14,8 @@ import java.awt.event.KeyEvent;
 //used for debugging
 public class Board extends JFrame
 {
+	public static final int WIDTH = 1920;
+	public static final int HEIGTH = 1080;
 	static boolean inBoard = false;
 	public Board() {
 		prepMenu();
