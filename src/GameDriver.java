@@ -8,6 +8,8 @@ public class GameDriver {
 	public static int livesGained = 0;
 	public static int wave = 1;
 	public static int keyValue = 0;
+	public static ArrayList<MovingObject> Asteroids = new ArrayList<MovingObject>();
+	
 	public static void main (String []args) {
 		//creates new instance of the Board to start game
 		Board menu = new Board();
@@ -30,7 +32,16 @@ public class GameDriver {
 				Board.inBoard = false;
 			}			
 	      }
-	}
+		
+		while(wave != 0) {
+			for(int i=0; i<Asteroids.size(); i++) {
+				if(Asteroids.get(i).getExists() == false) {
+					Asteroids.remove(i);
+					i--;
+				}
+			}
+		}
+		}
 
 	/*public void keyPressed(KeyEvent e) {
 
@@ -50,32 +61,19 @@ public class GameDriver {
 		livesRemaining++;
 	}
 
-<<<<<<< HEAD
-=======
-	int wave = 1; // starts at wave 1, with set number of Asteroids to begin with
-	ArrayList<MovingObject> Asteroids = new ArrayList<MovingObject>();
-	while(wave != 0) {
-		for(int i=0; i<Asteroids.size(); i++) {
-			if(Asteroids.get(i).getExists() == false) {
-				Asteroids.remove(i);
-				i--;
-			}
-		}
-	}
->>>>>>> origin/master
 	void startWave() {
 		while(Asteroids.size()<3+wave) {
 			Asteroids.add(new LgAsteroid());
 		}
 	}
 
-	void ScoreUp()
+	void ScoreUp(int scoreGained)
 	{
+		score += scoreGained;
 		if(score >= (livesGained + 1) * 10000)
 		{
 			 addLife();
 			 livesGained++;
 		}
 	}
-	}
-	
+}
