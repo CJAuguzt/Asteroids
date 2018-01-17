@@ -76,4 +76,8 @@ public class GameDriver {
 			 livesGained++;
 		}
 	}
+<<<<<<< HEAD
 }
+=======
+	}
+>>>>>>> origin/master
