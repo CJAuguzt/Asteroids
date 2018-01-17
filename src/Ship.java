@@ -1,4 +1,3 @@
-
 public class Ship extends MovingObject
 {
 	private final int maxSpeed = -1;
@@ -17,11 +16,19 @@ public class Ship extends MovingObject
 	void rotateClockwise()
 	{
 		direction++;
+		if(direction > 360)
+		{
+			direction -= 360;
+		}
 	}
 	
 	void rotateCounterClockwise()
 	{
 		direction--;
+		if(direction < 0)
+		{
+			direction += 360;
+		}
 	}
 	
 	void accelerate()

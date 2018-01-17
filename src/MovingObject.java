@@ -9,17 +9,17 @@ public class MovingObject
 	
 	public void move()
 	{
-		x += (vx * Math.cos(Math.toRadians(direction)));
-		y += (vy * Math.sin(Math.toRadians(direction)));
+		x += Math.cos(Math.toRadians(direction));
+		y += Math.sin(Math.toRadians(direction));
 		this.wrap();
 	}
 	
 	public void wrap()
 	{
-		if(this.x > 1920 || this.x < 0 || this.y > 1080 || this.y < 0)
+		if(this.x > Board.WIDTH || this.x < 0 || this.y > Board.HEIGHT || this.y < 0)
 		{
-			this.x = (1920-x);
-			this.y = (1080-y);
+			this.x = (Board.WIDTH - x);
+			this.y = (Board.HEIGHT - y);
 		}
 	}
 	

@@ -2,6 +2,10 @@ import java.awt.event.KeyEvent;
 import java.util.Scanner;
 
 public class GameDriver {
+	public static int score = 0;
+	public static int livesRemaining = 3;
+	public static int livesGained = 0;
+	public static int wave = 1;
 	public static int keyValue = 0;
 	public static void main (String []args) {
 		//creates new instance of the Board to start game
@@ -40,20 +44,20 @@ public class GameDriver {
         }
 	}*/
 
-	int livesRemaining = 3; //starts off with 3 lives remaining 
-
 	void addLife() {
-
+		livesRemaining++;
 	}
-
-	int wave = 1; // starts at wave 1, with set number of Asteroids to begin with
 
 	void startWave() {
 	}
 
-	int score = 0;// starts with score of zero to be added onto
-
-	void ScoreUp() {
+	void ScoreUp()
+	{
+		if(score >= (livesGained + 1) * 10000)
+		{
+			 addLife();
+			 livesGained++;
+		}
 	}
 	}
 	

@@ -30,7 +30,7 @@ public class Board extends JFrame
 		setIconImage(icon.getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setContentPane(new JLabel(new ImageIcon("Images/menu/MainMenu1.png")));
-		setSize(1920, 1080);
+		setSize(WIDTH, HEIGHT);
 		}
 	
 	private void prepGame() {
@@ -41,7 +41,6 @@ public class Board extends JFrame
 		setIconImage(icon.getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setContentPane(new JLabel(new ImageIcon("Images/menu/Background.png")));
-		setSize(1920, 1080);
-
+		setSize(WIDTH, HEIGHT);
 	}
 }
