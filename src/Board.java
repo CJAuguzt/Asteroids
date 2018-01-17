@@ -16,10 +16,14 @@ public class Board extends JFrame
 {
 	public static final int WIDTH = 1920;
 	public static final int HEIGTH = 1080;
-	static boolean inBoard = false;
+	static boolean inBoard;
 	public Board() {
 		prepMenu();
-		if (inBoard == false) prepGame();
+		if (inBoard == true) {
+			prepMenu();
+		} else { 
+			prepGame();
+		}
 	}
 	public void prepMenu() {
 		inBoard = true;
@@ -42,6 +46,7 @@ public class Board extends JFrame
 		setIconImage(icon.getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setContentPane(new JLabel(new ImageIcon("Images/menu/Background.png")));
-		setSize(WIDTH, HEIGHT);
+		//setSize(WIDTH, HEIGHT);
+		pack();
 	}
 }

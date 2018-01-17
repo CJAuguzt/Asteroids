@@ -16,7 +16,7 @@ public class GameDriver {
 
 	public static void main(String[] args) {
 		Board menu = new Board();
-		JFrame guiFrame = new JFrame();
+		KeyBinding guiFrame = new KeyBinding();
 		EventQueue.invokeLater(new Runnable() {
 			@Override
 			public void run() {

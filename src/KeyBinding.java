@@ -14,16 +14,12 @@
 	     //Note: Typically the main method will be in a
 	    //separate class. As this is a simple one class
 	    //example it's all in the one class.
-	    public Console() {
-	    	
-	    	{
-	    }
-	    public void KeylistenerExample()
+	    public KeyBinding()
 	    {
 
 	        //make sure the program exits when the frame closes
-	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	        setTitle("Creating a Table Example");
+	    	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	        setTitle("Console");
 	        setSize(700,200);
 	      
 	        //This will center the JFrame in the middle of the screen
@@ -70,9 +66,10 @@
 	              }
 	        });
 	     
-	        guiFrame.add(inputText, BorderLayout.NORTH);
-	        guiFrame.add(scrollText, BorderLayout.CENTER);
-	        guiFrame.setVisible(true);
+	        add(inputText, BorderLayout.NORTH);
+	        add(scrollText, BorderLayout.CENTER);
+	        setVisible(true);
+	       
 	    }
 	    
 	}
