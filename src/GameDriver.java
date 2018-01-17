@@ -1,5 +1,6 @@
 import java.awt.event.KeyEvent;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class GameDriver {
 	public static int score = 0;
@@ -12,6 +13,7 @@ public class GameDriver {
 		Board menu = new Board();
 		// looks to see if you are in the Main Menu
 		while (Board.inBoard == true) {
+			
 			KeyEvent e;
 			int key = e.getKeyCode();
 	        if (key == KeyEvent.VK_ENTER) {
@@ -26,7 +28,7 @@ public class GameDriver {
 	        
 			if (keyValue == 1) {
 				Board.inBoard = false;
-			}
+			}			
 	      }
 	}
 
@@ -48,7 +50,23 @@ public class GameDriver {
 		livesRemaining++;
 	}
 
+<<<<<<< HEAD
+=======
+	int wave = 1; // starts at wave 1, with set number of Asteroids to begin with
+	ArrayList<MovingObject> Asteroids = new ArrayList<MovingObject>();
+	while(wave != 0) {
+		for(int i=0; i<Asteroids.size(); i++) {
+			if(Asteroids.get(i).getExists() == false) {
+				Asteroids.remove(i);
+				i--;
+			}
+		}
+	}
+>>>>>>> origin/master
 	void startWave() {
+		while(Asteroids.size()<3+wave) {
+			Asteroids.add(new LgAsteroid());
+		}
 	}
 
 	void ScoreUp()
