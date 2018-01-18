@@ -1,13 +1,5 @@
-<<<<<<< HEAD
-import java.awt.EventQueue;
-import java.awt.event.KeyEvent;
-import java.util.Scanner;
-
-import javax.swing.JFrame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-=======
->>>>>>> origin/master
 import java.util.ArrayList;
 
 public class GameDriver {
@@ -21,18 +13,13 @@ public class GameDriver {
 	public static ArrayList<Projectile> Projectiles = new ArrayList<Projectile>();
 
 	public static void main(String[] args) {
-<<<<<<< HEAD
 		Board menu = new Board();
 		Graphics g = null;
 		menu.drawShip(g);
 		// looks to see if you are in the Main Menu
-		
-=======
-		Board Game = new Board();
->>>>>>> origin/master
-		while (Board.inBoard == true) {
-			KeyBinding.updateMenu();
-		}
+		//while (Board.inBoard == true) {
+			//KeyBinding.updateMenu();
+		//}
 	}
 
 	{

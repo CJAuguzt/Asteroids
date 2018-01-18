@@ -3,7 +3,7 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 
 public class KeyBinding extends JFrame{
-	public static boolean[] keys;
+	public static boolean[] keys = new boolean[256];
 
 	public KeyBinding() {
 		new KeyListener() {
@@ -22,14 +22,15 @@ public class KeyBinding extends JFrame{
 	}
 
 	public static void updateMenu() {
-		if (keys[KeyEvent.VK_ENTER] && (Board.inBoard = true)) {
+		
+		if (keys[KeyEvent.VK_ENTER] && (Board.inBoard == true)) {
 			System.out.println("ENTER key has been pressed in the MENU");
 		}
-		if (keys[KeyEvent.VK_UP] && (Board.inBoard = true)) {
+		if (keys[KeyEvent.VK_UP] && (Board.inBoard == true)) {
 			System.out.println("UP key has been pressed in the MENU");
 		}
 
-		if (keys[KeyEvent.VK_DOWN] && (Board.inBoard = true)) {
+		if (keys[KeyEvent.VK_DOWN] && (Board.inBoard == true)) {
 			System.out.println("DOWN key has been pressed in the MENU");
 		}
 	}
