@@ -13,15 +13,28 @@ public class GameDriver {
 	public static void main(String[] args) {
 		Board Game = new Board();
 		while (Board.inBoard == true) {
-		KeyBinding.updateMenu();
+			KeyBinding.updateMenu();
 		}
 	}
+
 	{
 		while (wave != 0) {
 			for (int i = 0; i < Asteroids.size(); i++) {
 				if (Asteroids.get(i).getExists() == false) {
 					ScoreUp((int) Asteroids.get(i).getDirection());
 					if (Asteroids.get(i).getDirection() == 50) {
+
+		while (Board.inBoard == true) {
+			if(Ships.get(0).getExists()==false) {
+				Ships.remove(0);
+				if(livesRemaining != 0) {
+					Ships.add(new Ship());
+				}
+			}
+			for(int i=0; i<Asteroids.size(); i++) {
+				if(Asteroids.get(i).getExists() == false) {
+					ScoreUp((int)Asteroids.get(i).getDirection());
+					if(Asteroids.get(i).getDirection() == 50) {
 						Asteroids.add(new MedAsteroid());
 						Asteroids.add(new MedAsteroid());
 					} else if (Asteroids.get(i).getDirection() == 100) {
@@ -40,19 +53,26 @@ public class GameDriver {
 				}
 			}
 		}
+					}
+				}
+			}
+		}
 	}
-	void addLife() {
+
+	static void addLife() {
 		livesRemaining++;
 	}
-	void startWave() {
+
+	static void startWave() {
 		while (Asteroids.size() < 3 + wave) {
 			Asteroids.add(new LgAsteroid());
+			Ships.remove(0);
 			Ships.add(new Ship());
 		}
 
 	}
 
-	void ScoreUp(int scoreGained) {
+	static void ScoreUp(int scoreGained) {
 		score += scoreGained;
 		if (score >= (livesGained + 1) * 10000) {
 			addLife();
