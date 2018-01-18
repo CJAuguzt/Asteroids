@@ -16,14 +16,14 @@ public class GameDriver {
 
 	public static void main(String[] args) {
 		Board menu = new Board();
-		KeyBinding guiFrame = new KeyBinding();
-		EventQueue.invokeLater(new Runnable() {
+		//KeyBinding guiFrame = new KeyBinding();
+		/*EventQueue.invokeLater(new Runnable() {
 			@Override
 			public void run() {
 				new KeyBinding();
 			}
-		});
-
+		});*/
+		
 	}
 
 	{

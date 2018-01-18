@@ -16,12 +16,12 @@ public class Board extends JFrame
 {
 	public static final int WIDTH = 1920;
 	public static final int HEIGTH = 1080;
-	static boolean inBoard;
+    public static boolean inBoard;
 	public Board() {
+		//prepMenu();
+		new KeyBinding();
 		prepMenu();
-		if (inBoard == true) {
-			prepMenu();
-		} else { 
+		if (inBoard == false) {
 			prepGame();
 		}
 	}

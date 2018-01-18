@@ -48,12 +48,17 @@
 	              @Override 
 	              public void keyPressed(KeyEvent e)
 	              {
-	                  feedbackText.append("Key Pressed: " + e.getKeyChar() + "\n");
+	                 
+	            	  if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+	            		 feedbackText.append("Key Pressed: ENTER\n");
+	            		Board.inBoard = false;
+	            		  
+	            	  }
 	              }
 	              @Override
 	              public void keyReleased(KeyEvent e)
 	              {
-	                  feedbackText.append("Key Released: " + e.getKeyChar() + "\n");
+	                  //feedbackText.append("Key Released: " + e.getKeyChar() + "\n");
 	              }
 	              
 	              @Override
@@ -62,7 +67,7 @@
 	                  //The getKeyModifiers method is a handy
 	                  //way to get a String representing the
 	                  //modifier key.
-	                  feedbackText.append("Key Typed: " + e.getKeyChar() + " " + KeyEvent.getKeyModifiersText(e.getModifiers()) + "\n");
+	                  //feedbackText.append("Key Typed: " + e.getKeyChar() + " " + KeyEvent.getKeyModifiersText(e.getModifiers()) + "\n");
 	              }
 	        });
 	     
