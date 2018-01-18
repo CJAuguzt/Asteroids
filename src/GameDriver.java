@@ -14,24 +14,11 @@ public class GameDriver {
 		//creates new instance of the Board to start game
 		Board menu = new Board();
 		// looks to see if you are in the Main Menu
+		
 		while (Board.inBoard == true) {
 			
-			KeyEvent e;
-			int key = e.getKeyCode();
-	        if (key == KeyEvent.VK_ENTER) {
-	        	keyValue = 1;
-	        }
-	        if (key == KeyEvent.VK_UP){
-	        	keyValue = 2;
-	        }
-	        if (key == KeyEvent.VK_DOWN) {
-	        	keyValue = 3;
-	        }
-	        
-			if (keyValue == 1) {
-				Board.inBoard = false;
-			}			
-	      }
+		}
+			
 		
 		while(wave != 0) {
 			for(int i=0; i<Asteroids.size(); i++) {
@@ -39,8 +26,7 @@ public class GameDriver {
 					Asteroids.remove(i);
 					i--;
 				}
-			}
-		}
+			}}
 		}
 
 	/*public void keyPressed(KeyEvent e) {
@@ -76,8 +62,4 @@ public class GameDriver {
 			 livesGained++;
 		}
 	}
-<<<<<<< HEAD
 }
-=======
-	}
->>>>>>> origin/master
