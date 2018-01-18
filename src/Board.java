@@ -4,7 +4,10 @@
  * CJA 1/11/2018
  */
 import javax.swing.JFrame;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import javax.swing.JLabel;
+import com.sun.prism.Image;
 import javax.swing.ImageIcon;
 import java.awt.event.KeyEvent;
 
@@ -18,10 +21,9 @@ public class Board extends JFrame
 	public static final int HEIGTH = 1080;
     public static boolean inBoard;
 	public Board() {
-		//prepMenu();
 		new KeyBinding();
 		prepMenu();
-		if (inBoard == false) {
+		if (!inBoard) {
 			prepGame();
 		}
 	}
@@ -48,5 +50,12 @@ public class Board extends JFrame
 		setContentPane(new JLabel(new ImageIcon("Images/menu/Background.png")));
 		//setSize(WIDTH, HEIGHT);
 		pack();
+	}
+	
+	void drawShip(Graphics g)
+	{
+		Ship ship = new Ship();
+		Graphics2D g2d = (Graphics2D) g;
+		g2d.drawImage(ship.getImage(), (int) ship.getX(), (int) ship.getY(), this);
 	}
 }

@@ -1,7 +1,12 @@
+import javax.swing.ImageIcon;
+import com.sun.prism.Image;
+
 public class Ship extends MovingObject
 {
 	private final int maxSpeed = -1;
 	private float acceleration;
+	private static ImageIcon ii = new ImageIcon("Images/Ship/S1V2.png");
+    private static java.awt.Image image = ii.getImage();
 	
 	public Ship()
 	{
@@ -53,5 +58,10 @@ public class Ship extends MovingObject
 	public void setAcceleration(float in)
 	{
 		acceleration = in;
+	}
+	
+	public java.awt.Image getImage()
+	{
+		return image;
 	}
 }
