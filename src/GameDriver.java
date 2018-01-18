@@ -19,12 +19,6 @@ public class GameDriver {
 
 	{
 		while (wave != 0) {
-			for (int i = 0; i < Asteroids.size(); i++) {
-				if (Asteroids.get(i).getExists() == false) {
-					ScoreUp((int) Asteroids.get(i).getDirection());
-					if (Asteroids.get(i).getDirection() == 50) {
-
-		while (Board.inBoard == true) {
 			if(Ships.get(0).getExists()==false) {
 				Ships.remove(0);
 				if(livesRemaining != 0) {
@@ -53,10 +47,6 @@ public class GameDriver {
 				}
 			}
 		}
-					}
-				}
-			}
-		}
 	}
 
 	static void addLife() {
@@ -66,9 +56,9 @@ public class GameDriver {
 	static void startWave() {
 		while (Asteroids.size() < 3 + wave) {
 			Asteroids.add(new LgAsteroid());
-			Ships.remove(0);
-			Ships.add(new Ship());
 		}
+		Ships.remove(0);
+		Ships.add(new Ship());
 
 	}
 
