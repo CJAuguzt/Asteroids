@@ -13,13 +13,19 @@ public class GameDriver {
 	public static int wave = 1;
 	public static int keyValue = 0;
 	public static ArrayList<MovingObject> Asteroids = new ArrayList<MovingObject>();
-
+	public static ArrayList<Ship> Ships = new ArrayList<Ship>();
+	public static ArrayList<Projectile> Projectiles = new ArrayList<Projectile>();
 	public static void main(String[] args) {
 		Board menu = new Board();
 		// looks to see if you are in the Main Menu
 		
 		while (Board.inBoard == true) {
-			
+			if(Ships.get(0).getExists()==false) {
+				Ships.remove(0);
+				if(livesRemaining != 0) {
+					Ships.add(new Ship());
+				}
+			}	
 		}
 	}
 			
@@ -35,6 +41,14 @@ public class GameDriver {
 			for(int i=0; i<Asteroids.size(); i++) {
 				if(Asteroids.get(i).getExists() == false) {
 					ScoreUp((int)Asteroids.get(i).getDirection());
+					if(Asteroids.get(i).getDirection() == 50) {
+						Asteroids.add(new MedAsteroid());
+						Asteroids.add(new MedAsteroid());
+					}
+					else if(Asteroids.get(i).getDirection() == 100) {
+						Asteroids.add(new SmAsteroid());
+						Asteroids.add(new SmAsteroid());
+					}
 					Asteroids.remove(i);
 					i--;
 
@@ -59,7 +73,9 @@ public class GameDriver {
 	void startWave() {
 		while (Asteroids.size() < 3 + wave) {
 			Asteroids.add(new LgAsteroid());
+			Ships.add(new Ship());
 		}
+		
 	}
 
 	void ScoreUp(int scoreGained)

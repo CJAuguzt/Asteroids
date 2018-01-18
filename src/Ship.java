@@ -41,11 +41,10 @@ public class Ship extends MovingObject
 	}
 	
 	void collision()
-	{}
-	
-	void respawn()
-	{}
-	
+	{
+		setExists(false);
+	}
+
 	public float getAcceleration()
 	{
 		return acceleration;
