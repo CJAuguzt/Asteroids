@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import java.awt.EventQueue;
 import java.awt.event.KeyEvent;
 import java.util.Scanner;
@@ -5,6 +6,8 @@ import java.util.Scanner;
 import javax.swing.JFrame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+=======
+>>>>>>> origin/master
 import java.util.ArrayList;
 
 public class GameDriver {
@@ -16,78 +19,72 @@ public class GameDriver {
 	public static ArrayList<MovingObject> Asteroids = new ArrayList<MovingObject>();
 	public static ArrayList<Ship> Ships = new ArrayList<Ship>();
 	public static ArrayList<Projectile> Projectiles = new ArrayList<Projectile>();
+
 	public static void main(String[] args) {
+<<<<<<< HEAD
 		Board menu = new Board();
 		Graphics g = null;
 		menu.drawShip(g);
 		// looks to see if you are in the Main Menu
 		
+=======
+		Board Game = new Board();
+>>>>>>> origin/master
 		while (Board.inBoard == true) {
+			KeyBinding.updateMenu();
+		}
+	}
+
+	{
+		while (wave != 0) {
 			if(Ships.get(0).getExists()==false) {
 				Ships.remove(0);
 				if(livesRemaining != 0) {
 					Ships.add(new Ship());
 				}
-			}	
-		}
-	}
-			
-
-		//KeyBinding guiFrame = new KeyBinding();
-		/*EventQueue.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				new KeyBinding();
 			}
-
-
 			for(int i=0; i<Asteroids.size(); i++) {
 				if(Asteroids.get(i).getExists() == false) {
 					ScoreUp((int)Asteroids.get(i).getDirection());
 					if(Asteroids.get(i).getDirection() == 50) {
 						Asteroids.add(new MedAsteroid());
 						Asteroids.add(new MedAsteroid());
-					}
-					else if(Asteroids.get(i).getDirection() == 100) {
+					} else if (Asteroids.get(i).getDirection() == 100) {
 						Asteroids.add(new SmAsteroid());
 						Asteroids.add(new SmAsteroid());
 					}
 					Asteroids.remove(i);
 					i--;
 
+				}
+			}
+			if (Ships.get(0).getExists() == false) {
+				Ships.remove(0);
+				if (livesRemaining != 0) {
+					Ships.add(new Ship());
+				}
+			}
+		}
+	}
 
-	/*public void keyPressed(KeyEvent e) {
-
-        int key = e.getKeyCode();
-        if (key == KeyEvent.VK_ENTER) {
-        	keyValue = 1;
-        }
-        if (key == KeyEvent.VK_UP){
-        	keyValue = 2;
-        }
-        if (key == KeyEvent.VK_DOWN) {
-        	keyValue = 3;
-        }
-	}*/
-
-	void addLife() {
+	static void addLife() {
 		livesRemaining++;
 	}
-	void startWave() {
+
+	static void startWave() {
 		while (Asteroids.size() < 3 + wave) {
 			Asteroids.add(new LgAsteroid());
-			Ships.add(new Ship());
 		}
-		
+		Ships.remove(0);
+		Ships.add(new Ship());
+
 	}
 
-	void ScoreUp(int scoreGained)
-	{
+	static void ScoreUp(int scoreGained) {
 		score += scoreGained;
-		if(score >= (livesGained + 1) * 10000)
-		{
-			 addLife();
-			 livesGained++;
+		if (score >= (livesGained + 1) * 10000) {
+			addLife();
+			livesGained++;
 		}
 	}
 }
