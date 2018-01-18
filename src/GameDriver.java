@@ -1,5 +1,9 @@
+import java.awt.EventQueue;
 import java.awt.event.KeyEvent;
 import java.util.Scanner;
+
+import javax.swing.JFrame;
+
 import java.util.ArrayList;
 
 public class GameDriver {
@@ -8,48 +12,37 @@ public class GameDriver {
 	public static int livesGained = 0;
 	public static int wave = 1;
 	public static int keyValue = 0;
-	public static void main (String []args) {
-		//creates new instance of the Board to start game
+	public static ArrayList<MovingObject> Asteroids = new ArrayList<MovingObject>();
+
+	public static void main(String[] args) {
 		Board menu = new Board();
-		// looks to see if you are in the Main Menu
-		while (Board.inBoard == true) {
-			
-			KeyEvent e;
-			int key = e.getKeyCode();
-	        if (key == KeyEvent.VK_ENTER) {
-	        	keyValue = 1;
-	        }
-	        if (key == KeyEvent.VK_UP){
-	        	keyValue = 2;
-	        }
-	        if (key == KeyEvent.VK_DOWN) {
-	        	keyValue = 3;
-	        }
-	        
-			if (keyValue == 1) {
-				Board.inBoard = false;
-			}			
-	      }
+		//KeyBinding guiFrame = new KeyBinding();
+		/*EventQueue.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new KeyBinding();
+			}
+		});*/
+		
 	}
 
-	/*public void keyPressed(KeyEvent e) {
-
-        int key = e.getKeyCode();
-        if (key == KeyEvent.VK_ENTER) {
-        	keyValue = 1;
-        }
-        if (key == KeyEvent.VK_UP){
-        	keyValue = 2;
-        }
-        if (key == KeyEvent.VK_DOWN) {
-        	keyValue = 3;
-        }
-	}*/
+	{
+		while(wave!=0)
+	{
+			for(int i=0; i<Asteroids.size(); i++) {
+				if(Asteroids.get(i).getExists() == false) {
+					Asteroids.remove(i);
+					i--;
+				}
+			}
+		}
+	}
 
 	void addLife() {
 		livesRemaining++;
 	}
 
+<<<<<<< HEAD
 	int wave = 1; // starts at wave 1, with set number of Asteroids to begin with
 	ArrayList<MovingObject> Asteroids = new ArrayList<MovingObject>();
 	while(wave != 0) {
@@ -60,18 +53,21 @@ public class GameDriver {
 			}
 		}
 	}
+=======
+>>>>>>> origin/master
 	void startWave() {
-		while(Asteroids.size()<3+wave) {
+		while (Asteroids.size() < 3 + wave) {
 			Asteroids.add(new LgAsteroid());
 		}
 	}
 
-	void ScoreUp()
+	void ScoreUp(int scoreGained)
 	{
+		score += scoreGained;
 		if(score >= (livesGained + 1) * 10000)
 		{
 			 addLife();
 			 livesGained++;
 		}
 	}
-	}
+}
