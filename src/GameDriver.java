@@ -25,19 +25,7 @@ public class GameDriver {
 				if(livesRemaining != 0) {
 					Ships.add(new Ship());
 				}
-			}	
-		}
-	}
-			
-
-		//KeyBinding guiFrame = new KeyBinding();
-		/*EventQueue.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				new KeyBinding();
 			}
-
-
 			for(int i=0; i<Asteroids.size(); i++) {
 				if(Asteroids.get(i).getExists() == false) {
 					ScoreUp((int)Asteroids.get(i).getDirection());
@@ -51,8 +39,24 @@ public class GameDriver {
 					}
 					Asteroids.remove(i);
 					i--;
+				}
+			}
+			if(Asteroids.size() <= 0) {
+				wave++;
+				startWave();
+			}
+		}
+	}
+			
 
-
+		//KeyBinding guiFrame = new KeyBinding();
+		/*EventQueue.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new KeyBinding();
+			}
+		*/
+	
 	/*public void keyPressed(KeyEvent e) {
 
         int key = e.getKeyCode();
@@ -67,18 +71,19 @@ public class GameDriver {
         }
 	}*/
 
-	void addLife() {
+	static void addLife() {
 		livesRemaining++;
 	}
-	void startWave() {
+	static void startWave() {
 		while (Asteroids.size() < 3 + wave) {
 			Asteroids.add(new LgAsteroid());
+			Ships.remove(0);
 			Ships.add(new Ship());
 		}
 		
 	}
 
-	void ScoreUp(int scoreGained)
+	static void ScoreUp(int scoreGained)
 	{
 		score += scoreGained;
 		if(score >= (livesGained + 1) * 10000)
