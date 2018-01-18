@@ -4,7 +4,7 @@ public class LgAsteroid extends MovingObject{
 		(float)Math.random()*6-3, (float)Math.random()*6-3, 0);
 	}
 	public LgAsteroid(float x, float y, float vx, float vy, float direction) {
-		super(x, y, vx, vy, 0);
+		super(x, y, vx, vy, 50);
 	}
 	public void Break() {
 		setExists(false);

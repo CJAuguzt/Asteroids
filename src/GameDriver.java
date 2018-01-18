@@ -1,5 +1,9 @@
+import java.awt.EventQueue;
 import java.awt.event.KeyEvent;
 import java.util.Scanner;
+
+import javax.swing.JFrame;
+
 import java.util.ArrayList;
 
 public class GameDriver {
@@ -9,25 +13,31 @@ public class GameDriver {
 	public static int wave = 1;
 	public static int keyValue = 0;
 	public static ArrayList<MovingObject> Asteroids = new ArrayList<MovingObject>();
-	
-	public static void main (String []args) {
-		//creates new instance of the Board to start game
+
+	public static void main(String[] args) {
 		Board menu = new Board();
 		// looks to see if you are in the Main Menu
 		
 		while (Board.inBoard == true) {
 			
 		}
+	}
 			
-		
-		while(wave != 0) {
+
+		//KeyBinding guiFrame = new KeyBinding();
+		/*EventQueue.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new KeyBinding();
+			}
+
+
 			for(int i=0; i<Asteroids.size(); i++) {
 				if(Asteroids.get(i).getExists() == false) {
+					ScoreUp((int)Asteroids.get(i).getDirection());
 					Asteroids.remove(i);
 					i--;
-				}
-			}}
-		}
+
 
 	/*public void keyPressed(KeyEvent e) {
 
@@ -46,9 +56,8 @@ public class GameDriver {
 	void addLife() {
 		livesRemaining++;
 	}
-
 	void startWave() {
-		while(Asteroids.size()<3+wave) {
+		while (Asteroids.size() < 3 + wave) {
 			Asteroids.add(new LgAsteroid());
 		}
 	}
