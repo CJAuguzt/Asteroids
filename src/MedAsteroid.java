@@ -4,7 +4,7 @@ public class MedAsteroid extends MovingObject{
 		(float)Math.random()*12-6, (float)Math.random()*12-6, 0);
 	}
 	public MedAsteroid(float x, float y, float vx, float vy, float direction) {
-		super(x, y, vx, vy, 0);
+		super(x, y, vx, vy, 100);
 	}
 	public void Break() {
 		setExists(false);

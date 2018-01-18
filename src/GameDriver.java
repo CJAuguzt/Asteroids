@@ -31,6 +31,7 @@ public class GameDriver {
 	{
 			for(int i=0; i<Asteroids.size(); i++) {
 				if(Asteroids.get(i).getExists() == false) {
+					ScoreUp((int)Asteroids.get(i).getDirection());
 					Asteroids.remove(i);
 					i--;
 				}
@@ -41,20 +42,6 @@ public class GameDriver {
 	void addLife() {
 		livesRemaining++;
 	}
-
-<<<<<<< HEAD
-	int wave = 1; // starts at wave 1, with set number of Asteroids to begin with
-	ArrayList<MovingObject> Asteroids = new ArrayList<MovingObject>();
-	while(wave != 0) {
-		for(int i=0; i<Asteroids.size(); i++) {
-			if(Asteroids.get(i).getExists() == false) {
-				Asteroids.remove(i);
-				i--;
-			}
-		}
-	}
-=======
->>>>>>> origin/master
 	void startWave() {
 		while (Asteroids.size() < 3 + wave) {
 			Asteroids.add(new LgAsteroid());
