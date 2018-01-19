@@ -2,36 +2,85 @@ import javax.swing.JFrame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
-
-public class Board extends JFrame {
+public class Board extends JPanel {
 	// public static boolean inBoard;
 	public static boolean inGame;
-	
-	public Board() {
-		addKeyListener(new KeyBinding());
-		setFocusable(true);
-		requestFocusInWindow();
-		setResizable(false);
-		setTitle("Asteroids");
-		
-		ImageIcon icon = new ImageIcon("Images/Ship/S1V2.png");
-		setIconImage(icon.getImage());
-		
-		setContentPane(new JLabel(new ImageIcon("Images/menu/Background.png")));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(1920,1080);
-		setVisible(true);
-		}
+	public static int score = 0;
+	public static int livesRemaining = 3;
+	public static int livesGained = 0;
+	public static int wave = 1;
+	public static ArrayList<MovingObject> Asteroids = new ArrayList<MovingObject>();
+	public static ArrayList<Ship> Ships = new ArrayList<Ship>();
+	public static ArrayList<Projectile> Projectiles = new ArrayList<Projectile>();
+	public static JFrame window = new JFrame();
+	private final int ship_size = 32;
+	static Image ship;
+	static Image asteroidL;
+	static Image asteroidM;
+	static Image asteroidS;
+	static Image projectile;
 
-	void drawShip(Graphics g) {
-		Ship ship = new Ship();
-		Graphics2D g2d = (Graphics2D) g;
-		g2d.drawImage(ship.getImage(), (int) ship.getX(), (int) ship.getY(), this);
+	public Board() {
+		window.addKeyListener(new KeyBinding());
+		window.setFocusable(true);
+		window.requestFocusInWindow();
+		window.setResizable(false);
+		window.setTitle("Asteroids");
+		
+		loadImages();
+		window.setIconImage(ship);
+		
+		window.setContentPane(new JLabel(new ImageIcon("Images/menu/Background.png")));
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.setSize(1920,1080);
+		window.setVisible(true);
+		
+		}
+	
+	private void loadImages()
+	{
+		ImageIcon iis = new ImageIcon("Images/Ship/S1V2.png");
+		ship = iis.getImage();
+		
+		ImageIcon iip = new ImageIcon("Images/Ship/Projectile.png");
+		projectile = iip.getImage();
+		
+		ImageIcon iial = new ImageIcon("Images/Asteroids/AL.png");
+		asteroidL = iial.getImage();
+		
+		ImageIcon iiam = new ImageIcon("Images/Asteroids/AM.png");
+		asteroidM = iiam.getImage();
+		
+		ImageIcon iias = new ImageIcon("Images/Asteroids/AS.png");
+		asteroidS = iias.getImage();
 	}
+	
+	@Override
+	public void paintComponent(Graphics g)
+	{
+		super.paintComponent(g);
+		doDrawing(g);
+	}
+	
+	private void doDrawing(Graphics g)
+	{
+		if(inGame)
+		{
+			g.drawImage(ship, 960, 540, this);
+			Toolkit.getDefaultToolkit().sync();
+		}
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+        repaint();
+    }
 	
 	void drawScore(Graphics g) {
 		
@@ -41,5 +90,56 @@ public class Board extends JFrame {
 		
 	}
 	
-	
+	void update()
+	{
+		while (wave != 0) {
+			if(!Ships.get(0).getExists()) {
+				Ships.remove(0);
+				if(livesRemaining != 0) {
+					Ships.add(new Ship());
+				}
+			}
+			for(int i=0; i<Asteroids.size(); i++) {
+				if(Asteroids.get(i).getExists() == false) {
+					ScoreUp((int)Asteroids.get(i).getDirection());
+					if(Asteroids.get(i).getDirection() == 50) {
+						Asteroids.add(new MedAsteroid());
+						Asteroids.add(new MedAsteroid());
+					} else if (Asteroids.get(i).getDirection() == 100) {
+						Asteroids.add(new SmAsteroid());
+						Asteroids.add(new SmAsteroid());
+					}
+					Asteroids.remove(i);
+					i--;
+
+				}
+			}
+			if (Ships.get(0).getExists() == false) {
+				Ships.remove(0);
+				if (livesRemaining != 0) {
+					Ships.add(new Ship());
+				}
+			}
+		}
+	}
+
+	static void addLife() {
+		livesRemaining++;
+	}
+
+	static void startWave() {
+		while (Asteroids.size() < 3 + wave) {
+			Asteroids.add(new LgAsteroid());
+		}
+		Ships.remove(0);
+		Ships.add(new Ship());
+	}
+
+	void ScoreUp(int scoreGained) {
+		score += scoreGained;
+		if (score >= (livesGained + 1) * 10000) {
+			addLife();
+			livesGained++;
+		}
+	}
 }
