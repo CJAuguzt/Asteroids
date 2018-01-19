@@ -1,5 +1,3 @@
-import java.awt.Image;
-import javax.swing.ImageIcon;
 public class SmAsteroid extends MovingObject{
 	public SmAsteroid() {
 		super((float)Math.random()*1920, (float)Math.random()*1000,
