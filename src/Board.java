@@ -1,63 +1,34 @@
-
-/*V1 
- * needs to use Java Nonblocking IO
- * CJA 1/11/2018
- */
 import javax.swing.JFrame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JLabel;
-import com.sun.prism.Image;
-import javax.swing.ImageIcon;
-import java.awt.event.KeyEvent;
+import java.awt.Image;
+import java.awt.Toolkit;
 
-//used for Board constructor
-//import java.io.*; 
-//import javax.imageio.*;
-//used for debugging
+import javax.swing.ImageIcon;
+
+
 public class Board extends JFrame {
-	//public static final int WIDTH = 1920;
-	//public static final int HEIGTH = 1080;
-	//don't need these
-	public static boolean inBoard;
+	// public static boolean inBoard;
+	public static boolean inGame;
 
 	public Board() {
-		new KeyBinding();
-		prepMenu();
-		while (inBoard) {
-			KeyBinding.updateMenu();
-		if (!inBoard) {
-			prepGame();
-			}
-		}
-		}
-
-	public void prepMenu() {
-		inBoard = true;
-		setVisible(true);
-		setTitle("Asteroids");
+		addKeyListener(new KeyBinding());
+		setFocusable(true);
+		requestFocusInWindow();
 		setResizable(false);
-		ImageIcon icon = new ImageIcon("Images/Ship/S1V2.png");
-		setIconImage(icon.getImage());
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setContentPane(new JLabel(new ImageIcon("Images/menu/MainMenu1.png")));
-		setSize(1920, 1080);
-	}
-
-	private void prepGame() {
-		setVisible(true);
 		setTitle("Asteroids");
-		setResizable(true);
+		
 		ImageIcon icon = new ImageIcon("Images/Ship/S1V2.png");
 		setIconImage(icon.getImage());
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		setContentPane(new JLabel(new ImageIcon("Images/menu/Background.png")));
-		// setSize(WIDTH, HEIGHT);
-		pack();
-	}
-	
-	void drawShip(Graphics g)
-	{
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(1920,1080);
+		setVisible(true);
+		}
+
+	void drawShip(Graphics g) {
 		Ship ship = new Ship();
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.drawImage(ship.getImage(), (int) ship.getX(), (int) ship.getY(), this);
