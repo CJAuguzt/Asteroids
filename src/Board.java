@@ -4,14 +4,13 @@ import java.awt.Graphics2D;
 import javax.swing.JLabel;
 import java.awt.Image;
 import java.awt.Toolkit;
-
 import javax.swing.ImageIcon;
 
 
 public class Board extends JFrame {
 	// public static boolean inBoard;
 	public static boolean inGame;
-
+	
 	public Board() {
 		addKeyListener(new KeyBinding());
 		setFocusable(true);
@@ -33,4 +32,14 @@ public class Board extends JFrame {
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.drawImage(ship.getImage(), (int) ship.getX(), (int) ship.getY(), this);
 	}
+	
+	void drawScore(Graphics g) {
+		
+	}
+	
+	void drawLives(Graphics g) {
+		
+	}
+	
+	
 }

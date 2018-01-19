@@ -22,8 +22,6 @@ public class GameDriver{
             public void run() {                
                 Board game = new Board();
                 Board.inGame = true;
-                Graphics g = null;
-        		game.drawShip(g);
             }
         });
 	}
