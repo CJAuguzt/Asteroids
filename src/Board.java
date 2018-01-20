@@ -37,6 +37,8 @@ public class Board extends JPanel {
 		loadImages();
 		window.setIconImage(ship);
 		
+		window.add(this);
+		
 		window.setContentPane(new JLabel(new ImageIcon("Images/menu/Background.png")));
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setSize(1920,1080);
@@ -46,20 +48,11 @@ public class Board extends JPanel {
 	
 	private void loadImages()
 	{
-		ImageIcon iis = new ImageIcon("Images/Ship/S1V2.png");
-		ship = iis.getImage();
-		
-		ImageIcon iip = new ImageIcon("Images/Ship/Projectile.png");
-		projectile = iip.getImage();
-		
-		ImageIcon iial = new ImageIcon("Images/Asteroids/AL.png");
-		asteroidL = iial.getImage();
-		
-		ImageIcon iiam = new ImageIcon("Images/Asteroids/AM.png");
-		asteroidM = iiam.getImage();
-		
-		ImageIcon iias = new ImageIcon("Images/Asteroids/AS.png");
-		asteroidS = iias.getImage();
+		ship = new ImageIcon("Images/Ship/S1V2.png").getImage();
+		projectile = new ImageIcon("Images/Ship/Projectile.png").getImage();
+		asteroidL = new ImageIcon("Images/Asteroids/AL.png").getImage();
+		asteroidM = new ImageIcon("Images/Asteroids/AM.png").getImage();
+		asteroidS = new ImageIcon("Images/Asteroids/AS.png").getImage();
 	}
 	
 	@Override
@@ -76,6 +69,11 @@ public class Board extends JPanel {
 			g.drawImage(ship, 960, 540, this);
 			Toolkit.getDefaultToolkit().sync();
 		}
+	}
+	
+	public void paint(Graphics g)
+	{
+		g.drawImage(ship, 400, 300, null);
 	}
 	
 	public void actionPerformed(ActionEvent e) {
