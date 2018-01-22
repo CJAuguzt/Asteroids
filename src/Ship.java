@@ -1,67 +1,24 @@
-import javax.swing.ImageIcon;
-import com.sun.prism.Image;
 
-public class Ship extends MovingObject
-{
-	private final int maxSpeed = -1;
-	private float acceleration;
-	private static ImageIcon ii = new ImageIcon("Images/Ship/S1V2.png");
-    private static java.awt.Image image = ii.getImage();
-	
-	public Ship()
-	{
-		super((float)(Board.WIDTH/2), (float)(Board.HEIGHT/2), 0, 0, 0);
-	}
-	
-	void shoot(int direction)
-	{
-		new Projectile(this.x, this.y, (this.vx + 10), (this.vy + 10), this.direction);
-	}
-	
-	void rotateClockwise()
-	{
-		direction++;
-		if(direction > 360)
-		{
-			direction -= 360;
-		}
-	}
-	
-	void rotateCounterClockwise()
-	{
-		direction--;
-		if(direction < 0)
-		{
-			direction += 360;
-		}
-	}
-	
-	void accelerate()
-	{
-		int totalSpeed = (int) Math.sqrt((Math.pow(vx, 2))+(Math.pow(vy, 2)));
-		if(totalSpeed >= maxSpeed)
-		{
-			return;
-		}
-	}
-	
-	void collision()
-	{
-		setExists(false);
-	}
+public class Ship extends MovingObject {
+	public static final String IMG_FILE = "Images/Ship/S1V2.png";
+	public static final int SIZE = 32;
+	public static final double INIT_POS_X = 300;
+	public static final double INIT_POS_Y = 300;
+	public static final double INIT_VEL_X = 0;
+	public static final double INIT_VEL_Y = 0;
+	public static final double INIT_F_THETA = 0;
+	public static final double INIT_D_THETA = 0;
 
-	public float getAcceleration()
-	{
-		return acceleration;
-	}
-	
-	public void setAcceleration(float in)
-	{
-		acceleration = in;
-	}
-	
-	public java.awt.Image getImage()
-	{
-		return image;
-	}
+/**
+ * Note that, because we don't need to do anything special when constructing
+ * a Square, we simply use the superclass constructor called with the
+ * correct parameters
+ */
+public Ship(double vel_x, double vel_y, double pos_x, double pos_y, int boardWidth, 
+        int boardHeight, double f_theta, double d_theta, String img_file) {
+    super(vel_x, vel_y, pos_x, pos_y, SIZE, SIZE, boardWidth, boardHeight,
+            f_theta, d_theta, img_file);
+
+}
+
 }

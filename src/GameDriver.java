@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 public class GameDriver{
@@ -12,9 +13,12 @@ public class GameDriver{
 		//EventQueue allows for keys to be listened for
 		EventQueue.invokeLater(new Runnable() {
             @Override
-            public void run() {                
-                Board game = new Board();
-                Board.inGame = true;
+            public void run() {   
+            	final JFrame frame = new JFrame("Asteroids");
+            	final Board game = new Board();
+        		frame.add(game, BorderLayout.CENTER);
+        		game.reset();
+                game.inGame = true;
             }
         });
 	}
