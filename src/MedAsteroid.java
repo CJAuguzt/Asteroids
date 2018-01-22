@@ -1,14 +1,32 @@
+import java.awt.Image;
+import java.awt.Rectangle;
+
+import javax.swing.ImageIcon;
+
 public class MedAsteroid extends MovingObject{
+	public static int size = 32;
 	public MedAsteroid() {
-		super((float)Math.random()*1920, (float)Math.random()*1000,
-		(float)Math.random()*12-6, (float)Math.random()*12-6, 0);
-	}
-	public MedAsteroid(float x, float y, float vx, float vy, float direction) {
-		super(x, y, vx, vy, 100);
-	}
-	public void Break() {
+		this.x = 1920 * (int) Math.random();
+		this.y = 1080 * (int) Math.random();
+		this.speed = 3;
+		this.direction = 360 * (int) Math.random();
+		}
+	
+	public void Break()
+	{
 		setExists(false);
-		new SmAsteroid(this.getX(), this.getY(), (float)Math.random()*24-12, (float)Math.random()*24-12, 0);
-		new SmAsteroid(this.getX(), this.getY(), (float)Math.random()*24-12, (float)Math.random()*24-12, 0);
+		Board.Asteroids.remove(this);
+		Board.Asteroids.add(new SmAsteroid());
+		Board.Asteroids.add(new SmAsteroid());
+		Board.incrementScore(250);
+	}
+	
+	public Rectangle getBounds() {
+	    return new Rectangle(x, y, size, size);
+	}
+	
+	public Image getImage()
+	{
+		return new ImageIcon("Images/Asteroids/AM.png").getImage();
 	}
 }

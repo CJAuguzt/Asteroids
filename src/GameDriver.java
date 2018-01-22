@@ -1,21 +1,33 @@
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.util.ArrayList;
-
+import java.awt.EventQueue;
 import javax.swing.JFrame;
 
-import java.awt.EventQueue;
+public class GameDriver extends JFrame {
 
-public class GameDriver{
+    public GameDriver() {
+        
+        initUI();
+    }
+    
+    private void initUI() {
+        
+        add(new Board());
+        
+        setSize(1920, 1080);
+        setResizable(false);
+        
+        setTitle("Asteroids");
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
 
-	public static void main(String[] args) {
-		//EventQueue allows for keys to be listened for
-		EventQueue.invokeLater(new Runnable() {
+    public static void main(String[] args) {
+        
+        EventQueue.invokeLater(new Runnable() {
             @Override
-            public void run() {                
-                Board game = new Board();
-                Board.inGame = true;
+            public void run() {
+                GameDriver ex = new GameDriver();
+                ex.setVisible(true);
             }
         });
-	}
+    }
 }

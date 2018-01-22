@@ -9,6 +9,7 @@ public class KeyBinding extends KeyAdapter {
 		}
 		if (key == KeyEvent.VK_UP) {
 			System.out.println("UP key has been pressed in the GAME");
+			
 		}
 		if (key == KeyEvent.VK_DOWN) {
 			System.out.println("DOWN key has been pressed in the GAME");
@@ -21,6 +22,7 @@ public class KeyBinding extends KeyAdapter {
 		}
 		if (key == KeyEvent.VK_SPACE) {
 			System.out.println("SPACE key has been pressed in the GAME");
+			
 		}
 	}
 }

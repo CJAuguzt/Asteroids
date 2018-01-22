@@ -1,84 +1,88 @@
+import java.awt.Image;
+import java.awt.Rectangle;
+
 public class MovingObject
 {
-	public float direction;
-	public float x;
-	public float y;
-	public float vx;
-	public float vy;
-	public boolean exists;
+	protected int direction;
+	protected int x;
+	protected int y;
+	protected int speed;
+	private boolean exists;
+	private Image image;
+	private int size;
 	
 	public void move()
-	{
-		x += Math.cos(Math.toRadians(direction));
-		y += Math.sin(Math.toRadians(direction));
-		this.wrap();
-	}
+    {
+        x += speed * Math.sin(Math.toRadians(direction));
+        y += speed * Math.cos(Math.toRadians(direction));
+        wrap();
+    }
 	
 	public void wrap()
 	{
-		if(this.x > Board.WIDTH || this.x < 0 || this.y > Board.HEIGHT || this.y < 0)
+		if(this.x > 1920 || this.x < 0)
 		{
-			this.x = (Board.WIDTH - x);
-			this.y = (Board.HEIGHT - y);
+			this.x = (1920 - x);
+		}
+		
+		if(this.y > 1080 || this.y < 0)
+		{
+			this.y = (1080 - y);
 		}
 	}
 	
-	public MovingObject(float x, float y, float vx, float vy, float direction)
+	public MovingObject()
+	{}
+	
+	public MovingObject(int x, int y, int speed, int direction)
 	{
 		this.x = x;
 		this.y = y;
-		this.vx = vx;
-		this.vy = vy;
 		this.direction = direction;
 		this.exists = true;
+		System.out.println("Object created");
 	}
 	
-	public float getX()
+	public Rectangle getBounds() {
+	    return new Rectangle(x, y, size, size);
+	}
+	
+	public void loadImage(Image in)
+	{
+		this.image = in;
+	}
+	
+	public Image getImage()
+	{
+		return image;
+	}
+	
+	public int getX()
 	{
 		return x;
 	}
 	
-	public void setX(float in)
+	public void setX(int in)
 	{
 		x = in;
 	}
 	
-	public float getY()
+	public int getY()
 	{
 		return y;
 	}
 	
-	public void setY(float in)
+	public void setY(int in)
 	{
 		y = in;
 	}
 	
-	public float getVX()
-	{
-		return vx;
-	}
-	
-	public void setVX(float in)
-	{
-		vx = in;
-	}
-	
-	public float getVY()
-	{
-		return vy;
-	}
-	
-	public void setVY(float in)
-	{
-		vy = in;
-	}
-	
-	public float getDirection()
+	public int getDirection()
 	{
 		return direction;
 	}
 	
-	public void setDirection(float in)
+	public void setDirection(int in)
 	{
 		direction = in;
 	}
@@ -91,5 +95,20 @@ public class MovingObject
 	public void setExists(boolean in)
 	{
 		exists = in;
+	}
+	
+	public int getSpeed()
+	{
+		return this.speed;
+	}
+	
+	public void setSpeed(int in)
+	{
+		this.speed = in;
+	}
+	
+	public void Break()
+	{
+		
 	}
 }
