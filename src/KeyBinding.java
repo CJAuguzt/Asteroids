@@ -3,26 +3,36 @@ import java.awt.event.KeyEvent;
 
 public class KeyBinding extends KeyAdapter {
 	public void keyPressed(KeyEvent e) {
-		int key = e.getKeyCode();
-		if (key == KeyEvent.VK_ENTER && Board.inGame == true) {
-			System.out.println("ENTER key has been pressed in the GAME");
-		}
-		if (key == KeyEvent.VK_UP) {
-			System.out.println("UP key has been pressed in the GAME");
-			
-		}
-		if (key == KeyEvent.VK_DOWN) {
-			System.out.println("DOWN key has been pressed in the GAME");
-		}
-		if (key == KeyEvent.VK_RIGHT) {
-			System.out.println("RIGHT key has been pressed in the GAME");
-		}
-		if (key == KeyEvent.VK_LEFT) {
-			System.out.println("LEFT key has been pressed in the GAME");
-		}
-		if (key == KeyEvent.VK_SPACE) {
-			System.out.println("SPACE key has been pressed in the GAME");
-			
-		}
-	}
+
+        int key = e.getKeyCode();
+
+        //Rotates ship counter-clockwise
+        if (key == KeyEvent.VK_LEFT) {
+        	Board.player.setAngle(Board.player.getAngle() + 5);
+        }
+
+        //Rotates ship clockwise
+        if (key == KeyEvent.VK_RIGHT) {
+        	Board.player.setAngle(Board.player.getAngle() - 5);
+        }
+
+        //Increases speed of ship
+        if (key == KeyEvent.VK_UP) {
+            Board.player.setSpeed(-2);
+        }
+        
+        //Shoots projectile
+        if(key == KeyEvent.VK_SPACE)
+        {
+        	Board.player.shoot();
+        }
+    }
+	
+	public void keyReleased(KeyEvent e) {
+		//Decreases speed of ship
+        int key = e.getKeyCode();
+        if (key == KeyEvent.VK_UP) {
+            Board.player.setSpeed(0);
+        }
+    }
 }

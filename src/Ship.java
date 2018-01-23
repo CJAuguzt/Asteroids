@@ -31,35 +31,9 @@ public class Ship{
     }
 
     //Creates new Projectile object
-    private void shoot() {
+    void shoot() {
     	Board.Projectiles.add(new Projectile(x + 32, y + 32, angle));
 	}
-
-    public void keyPressed(KeyEvent e) {
-
-        int key = e.getKeyCode();
-
-        //Rotates ship counter-clockwise
-        if (key == KeyEvent.VK_LEFT) {
-        	angle += 5;
-        }
-
-        //Rotates ship clockwise
-        if (key == KeyEvent.VK_RIGHT) {
-        	angle -= 5;
-        }
-
-        //Increases speed of ship
-        if (key == KeyEvent.VK_UP) {
-            speed = -2;
-        }
-        
-        //Shoots projectile
-        if(key == KeyEvent.VK_SPACE)
-        {
-        	shoot();
-        }
-    }
 
 	public void keyReleased(KeyEvent e) {
         

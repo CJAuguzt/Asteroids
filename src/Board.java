@@ -23,7 +23,7 @@ public class Board extends JPanel implements ActionListener {
 	public static ArrayList<MovingObject> Asteroids = new ArrayList<MovingObject>();
 	public static ArrayList<Projectile> Projectiles = new ArrayList<Projectile>();
 	private Timer timer;
-    private static Ship player;
+    static Ship player;
     
     public Board() {
         initBoard();
@@ -32,7 +32,7 @@ public class Board extends JPanel implements ActionListener {
     //Sets up JPanel object
     private void initBoard() {
         
-        addKeyListener(new TAdapter());
+        addKeyListener(new KeyBinding());
         setFocusable(true);
         setBackground(Color.BLACK);
         player = new Ship();
@@ -90,19 +90,6 @@ public class Board extends JPanel implements ActionListener {
         	element.move();
         }
         repaint();  
-    }
-
-    private class TAdapter extends KeyAdapter {
-
-        @Override
-        public void keyReleased(KeyEvent e) {
-            player.keyReleased(e);
-        }
-
-        @Override
-        public void keyPressed(KeyEvent e) {
-            player.keyPressed(e);
-        }
     }
     
     //Checks whether ship has collided with asteroid
