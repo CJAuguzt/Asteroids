@@ -4,12 +4,15 @@ import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -60,10 +63,6 @@ public class Board extends JPanel implements ActionListener {
         	{
         		g2d.drawImage(element.getImage(), element.getX(), element.getY(),this);
         		element.remove();
-        		}else
-        	{
-        		//Deletes unused projectiles
-        		element = null;
         	}
         }
         for(MovingObject element: Asteroids)
@@ -71,10 +70,6 @@ public class Board extends JPanel implements ActionListener {
         	if(element.getExists())
         	{
         		g2d.drawImage(element.getImage(), element.getX(), element.getY(),this);
-        		}else
-        	{
-        		//Deletes unused asteroids
-        		element = null;
         	}
         }
         //Displays score and remaining lives
@@ -98,15 +93,21 @@ public class Board extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        update();
+        update();        
 		player.move();
         for(Projectile element: Projectiles)
         {
-        	element.move();
+        	if(element.getExists())
+        	{
+        		element.move();
+        	}
         }
         for(MovingObject element: Asteroids)
         {
-        	element.move();
+        	if(element.getExists())
+        	{
+        		element.move();
+        	}
         }
         repaint();  
     }
@@ -133,11 +134,14 @@ public class Board extends JPanel implements ActionListener {
     {
     	for(MovingObject target: Asteroids)
     	{
+    		Rectangle r1 = target.getBounds();
     		for(Projectile bullet: Projectiles)
     		{
-    			if(target.getBounds().intersects(bullet.getBounds()))
+    			Rectangle r2 = bullet.getBounds();
+    			if(r1.intersects(r2) && target.getExists() && bullet.getExists())
     			{
     				bullet.remove();
+    				bullet = null;
     				target.Break();
     			}
     		}
@@ -172,6 +176,7 @@ public class Board extends JPanel implements ActionListener {
     public void update()
     {
     	checkCollision();
+    	checkHit();
     	
     	//Initializes first wave of game
     	if(wave == 0)

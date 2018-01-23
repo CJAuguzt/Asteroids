@@ -9,7 +9,7 @@ public class MovingObject
 	protected int speed;
 	private boolean exists;
 	private Image image;
-	private int size;
+	protected int size;
 	
 	public void move()
     {
@@ -109,7 +109,5 @@ public class MovingObject
 	}
 	
 	public void Break()
-	{
-		
-	}
+	{}
 }

@@ -4,21 +4,21 @@ import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
 public class LgAsteroid extends MovingObject{
-	private static int size = 48;
 	public LgAsteroid()
 	{
 		super((int) (Math.random() * 1920), (int) (Math.random() * 1080), 2, (int) (Math.random() * 360));
+		size = 48;
 	}
 	
 	//Deletes LgAsteroid object and replaces it with two MedAsteroid objects
 	public void Break()
 	{
-		setExists(false);
+		System.out.println("Break");
 		speed = 0;
-		Board.Asteroids.remove(this);
 		Board.Asteroids.add(new MedAsteroid(this.getX(), this.getY()));
 		Board.Asteroids.add(new MedAsteroid(this.getX(), this.getY()));
 		Board.incrementScore(100);
+		setExists(false);
 	}
 	
 	public void move()

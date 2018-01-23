@@ -7,11 +7,11 @@ public class Projectile extends MovingObject
 {
 	public long time = System.currentTimeMillis();
 	private long existenceLength;
-	public static int size = 6;
 	Image image = new ImageIcon("Images/Ship/Projectile.png").getImage();
 	
 	public Projectile(int x, int y, int direction) {
 		super(x, y, 3, direction);
+		this.size = 6;
 	}
 	
 	//Moves projectile based on angle
