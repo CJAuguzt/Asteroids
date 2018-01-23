@@ -125,6 +125,8 @@ public class Board extends JPanel implements ActionListener {
     			player.setY(540);
     			player.setSpeed(0);
     			player.setAngle(0);
+    			element.Break();
+    			break;
     		}
     	}
     }
@@ -143,8 +145,11 @@ public class Board extends JPanel implements ActionListener {
     				bullet.remove();
     				bullet = null;
     				target.Break();
+    				break;
     			}
+    			break;
     		}
+    		break;
     	}
     }
     

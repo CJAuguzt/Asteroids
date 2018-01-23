@@ -14,7 +14,7 @@ public class SmAsteroid extends MovingObject{
 	public void Break() {
 		setExists(false);
 		Board.Asteroids.remove(this);
-		Board.incrementScore(1000);
+		Board.incrementScore(100);
 	}
 	
 	//Gets hitbox of asteroid

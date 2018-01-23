@@ -16,7 +16,7 @@ public class MedAsteroid extends MovingObject{
 		Board.Asteroids.remove(this);
 		Board.Asteroids.add(new SmAsteroid(this.getX(), this.getY()));
 		Board.Asteroids.add(new SmAsteroid(this.getX(), this.getY()));
-		Board.incrementScore(250);
+		Board.incrementScore(50);
 	}
 	
 	//Gets hitbox of asteroid

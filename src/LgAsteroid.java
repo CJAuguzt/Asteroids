@@ -15,10 +15,10 @@ public class LgAsteroid extends MovingObject{
 	{
 		System.out.println("Break");
 		speed = 0;
+		Board.Asteroids.remove(this);
 		Board.Asteroids.add(new MedAsteroid(this.getX(), this.getY()));
 		Board.Asteroids.add(new MedAsteroid(this.getX(), this.getY()));
-		Board.incrementScore(100);
-		setExists(false);
+		Board.incrementScore(20);
 	}
 	
 	public void move()
