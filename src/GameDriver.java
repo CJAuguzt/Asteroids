@@ -9,6 +9,7 @@ public class GameDriver extends JFrame {
         initUI();
     }
     
+    //Prepares window and UI of game
     private void initUI() {
         
         add(new Board());

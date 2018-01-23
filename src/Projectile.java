@@ -14,6 +14,7 @@ public class Projectile extends MovingObject
 		super(x, y, 3, direction);
 	}
 	
+	//Moves projectile based on angle
 	public void move()
     {
         x -= 3 * Math.sin(Math.toRadians(direction));
@@ -21,6 +22,7 @@ public class Projectile extends MovingObject
         wrap();
     }
 	
+	//Deletes projectile after 2 seconds
 	public void remove()
 	{
 		if ((System.currentTimeMillis() - time) >= 2000)
@@ -30,11 +32,13 @@ public class Projectile extends MovingObject
 		return;
 	}
 	
+	//Gets hitbox of projectile
 	public Rectangle getBounds()
 	{
 		return new Rectangle(x, y, size, size);
 	}
 	
+	//Gets image of projectile texture
 	public Image getImage()
 	{
 		return image;

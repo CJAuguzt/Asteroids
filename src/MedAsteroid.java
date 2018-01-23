@@ -9,6 +9,7 @@ public class MedAsteroid extends MovingObject{
 		super(x, y, 3, 360 * (int) Math.random());
 		}
 	
+	//Deletes MedAsteroid object and replaces it with two SmAsteroid objects
 	public void Break()
 	{
 		setExists(false);
@@ -18,6 +19,7 @@ public class MedAsteroid extends MovingObject{
 		Board.incrementScore(250);
 	}
 	
+	//Gets hitbox of asteroid
 	public Rectangle getBounds() {
 	    return new Rectangle(x, y, size, size);
 	}

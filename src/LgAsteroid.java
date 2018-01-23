@@ -10,6 +10,7 @@ public class LgAsteroid extends MovingObject{
 		super(1920 * (int) Math.random(), 1080 * (int) Math.random(), 3, 360 * (int) Math.random());
 	}
 	
+	//Deletes LgAsteroid object and replaces it with two MedAsteroid objects
 	public void Break()
 	{
 		setExists(false);
@@ -19,6 +20,7 @@ public class LgAsteroid extends MovingObject{
 		Board.incrementScore(100);
 	}
 	
+	//Gets hitbox of asteroid
 	public Rectangle getBounds() {
 	    return new Rectangle(x, y, size, size);
 	}

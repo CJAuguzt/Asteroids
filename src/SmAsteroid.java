@@ -9,13 +9,15 @@ public class SmAsteroid extends MovingObject{
 	{
 		super(x, y, 3, 360 * (int) Math.random());
 		}
-	
+
+	//Deletes SmAsteroid object and increases score
 	public void Break() {
 		setExists(false);
 		Board.Asteroids.remove(this);
 		Board.incrementScore(1000);
 	}
 	
+	//Gets hitbox of asteroid
 	public Rectangle getBounds() {
 	    return new Rectangle(x, y, size, size);
 	}

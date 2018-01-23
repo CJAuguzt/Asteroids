@@ -26,10 +26,10 @@ public class Board extends JPanel implements ActionListener {
     private static Ship player;
     
     public Board() {
-
         initBoard();
     }
     
+    //Sets up JPanel object
     private void initBoard() {
         
         addKeyListener(new TAdapter());
@@ -40,7 +40,6 @@ public class Board extends JPanel implements ActionListener {
         timer.start();
     }
 
-
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -49,6 +48,7 @@ public class Board extends JPanel implements ActionListener {
         Toolkit.getDefaultToolkit().sync();
     }
 
+    //Handles drawing of objects(ship, asteroids, projectiles)
     private void doDrawing(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(player.getImage(), player.getX(), player.getY(), this);
@@ -60,6 +60,7 @@ public class Board extends JPanel implements ActionListener {
         		element.remove();
         		}else
         	{
+        		//Deletes unused projectiles
         		element = null;
         	}
         }
@@ -70,6 +71,7 @@ public class Board extends JPanel implements ActionListener {
         		g2d.drawImage(element.getImage(), element.getX(), element.getY(),this);
         		}else
         	{
+        		//Deletes unused asteroids
         		element = null;
         	}
         }
@@ -103,6 +105,7 @@ public class Board extends JPanel implements ActionListener {
         }
     }
     
+    //Checks whether ship has collided with asteroid
     public void checkCollision()
     {
     	for(MovingObject element: Asteroids)
@@ -119,6 +122,7 @@ public class Board extends JPanel implements ActionListener {
     	}
     }
     
+    //Checks whether projectile has hit asteroid
     public void checkHit()
     {
     	for(MovingObject target: Asteroids)
@@ -134,6 +138,7 @@ public class Board extends JPanel implements ActionListener {
     	}
     }
     
+    //Increases score by given amount
     public static void incrementScore(int in)
     {
     	score += in;
@@ -146,6 +151,7 @@ public class Board extends JPanel implements ActionListener {
     	System.out.println("score: " + score);
     }
     
+    //Handles starting of new wave
     public void startWave()
     {
     	for(int i = 0; i <= 3 + wave; i++)
@@ -156,16 +162,21 @@ public class Board extends JPanel implements ActionListener {
     	System.out.println("Wave: " + wave);
     }
     
+    //Handles miscellaneous update routines
     public void update()
     {
     	checkCollision();
+    	
+    	//Initializes first wave of game
     	if(wave == 0)
     	{
     		startWave();
     	}else
     	{
+    		//Handles end of game following player death
     		if(livesRemaining == -1)
     		{
+    			//Halts movement of all objects
     			player.setSpeed(0);
     			for(Projectile element: Projectiles)
     			{
@@ -177,6 +188,7 @@ public class Board extends JPanel implements ActionListener {
     			}
     		}else
     		{
+    			//Checks if current wave has completed
     			boolean waveOver = true;
     			for(MovingObject element: Asteroids)
     			{
@@ -186,12 +198,14 @@ public class Board extends JPanel implements ActionListener {
     					break;
     				}
     			}
+    			//Begins new wave at end of current wave
     			if(waveOver)
     			{
     				startWave();
     			}
     		}
     	}
+    	//Updates wave number and score in title bar
     	GameDriver.ex.setTitle("Asteroids \tWave: " + wave + "\tPoints: " + score);
     }
 }
