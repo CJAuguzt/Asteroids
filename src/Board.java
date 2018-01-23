@@ -1,4 +1,6 @@
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -75,6 +77,23 @@ public class Board extends JPanel implements ActionListener {
         		element = null;
         	}
         }
+        //Displays score and remaining lives
+        g.setColor(Color.WHITE);
+        g.drawString("Score: " + score, 15, 15);
+        g.drawString("Lives: " + livesRemaining, 15, 30);
+        
+        //Displays game over message on player death
+        if(!inGame)
+        {
+        	String msg = "Game Over";
+            Font small = new Font("Helvetica", Font.BOLD, 14);
+            FontMetrics fm = getFontMetrics(small);
+
+            g.setColor(Color.white);
+            g.setFont(small);
+            g.drawString(msg, (1920 - fm.stringWidth(msg)) / 2, 1080 / 2);
+            livesRemaining = -1;
+        }
     }
 
     @Override
@@ -116,7 +135,7 @@ public class Board extends JPanel implements ActionListener {
     	{
     		for(Projectile bullet: Projectiles)
     		{
-    			if(bullet.getBounds().intersects(target.getBounds()))
+    			if(target.getBounds().intersects(bullet.getBounds()))
     			{
     				bullet.remove();
     				target.Break();
@@ -173,6 +192,7 @@ public class Board extends JPanel implements ActionListener {
     			{
     				element.setSpeed(0);
     			}
+    			inGame = false;
     		}else
     		{
     			//Checks if current wave has completed
@@ -193,6 +213,6 @@ public class Board extends JPanel implements ActionListener {
     		}
     	}
     	//Updates wave number and score in title bar
-    	GameDriver.ex.setTitle("Asteroids \tWave: " + wave + "\tPoints: " + score);
+    	GameDriver.ex.setTitle("Asteroids     Wave: " + wave + "     Lives: " + livesRemaining + "     Points: " + score);
     }
 }

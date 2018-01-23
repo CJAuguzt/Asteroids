@@ -39,6 +39,7 @@ public class MovingObject
 		this.x = x;
 		this.y = y;
 		this.direction = direction;
+		this.speed = speed;
 		this.exists = true;
 		System.out.println("Object created");
 	}

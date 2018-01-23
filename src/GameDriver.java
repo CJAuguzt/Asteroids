@@ -20,6 +20,7 @@ public class GameDriver extends JFrame {
         setTitle("Asteroids");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Board.inGame = true;
     }
 
     public static void main(String[] args) {

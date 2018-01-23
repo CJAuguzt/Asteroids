@@ -7,18 +7,26 @@ public class LgAsteroid extends MovingObject{
 	private static int size = 48;
 	public LgAsteroid()
 	{
-		super(1920 * (int) Math.random(), 1080 * (int) Math.random(), 3, 360 * (int) Math.random());
+		super((int) (Math.random() * 1920), (int) (Math.random() * 1080), 2, (int) (Math.random() * 360));
 	}
 	
 	//Deletes LgAsteroid object and replaces it with two MedAsteroid objects
 	public void Break()
 	{
 		setExists(false);
+		speed = 0;
 		Board.Asteroids.remove(this);
 		Board.Asteroids.add(new MedAsteroid(this.getX(), this.getY()));
 		Board.Asteroids.add(new MedAsteroid(this.getX(), this.getY()));
 		Board.incrementScore(100);
 	}
+	
+	public void move()
+    {
+        x += speed * Math.sin(Math.toRadians(direction));
+        y += speed * Math.cos(Math.toRadians(direction));
+        wrap();
+    }
 	
 	//Gets hitbox of asteroid
 	public Rectangle getBounds() {

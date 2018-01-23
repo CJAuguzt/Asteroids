@@ -8,12 +8,12 @@ public class KeyBinding extends KeyAdapter {
 
         //Rotates ship counter-clockwise
         if (key == KeyEvent.VK_LEFT) {
-        	Board.player.setAngle(Board.player.getAngle() + 5);
+        	Board.player.setAngle(Board.player.getAngle() + 10);
         }
 
         //Rotates ship clockwise
         if (key == KeyEvent.VK_RIGHT) {
-        	Board.player.setAngle(Board.player.getAngle() - 5);
+        	Board.player.setAngle(Board.player.getAngle() - 10);
         }
 
         //Increases speed of ship
