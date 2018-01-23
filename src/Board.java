@@ -136,20 +136,16 @@ public class Board extends JPanel implements ActionListener {
     {
     	for(MovingObject target: Asteroids)
     	{
-    		Rectangle r1 = target.getBounds();
     		for(Projectile bullet: Projectiles)
     		{
-    			Rectangle r2 = bullet.getBounds();
-    			if(r1.intersects(r2) && target.getExists() && bullet.getExists())
+    			if(target.getBounds().intersects(bullet.getBounds()) && target.getExists() && bullet.getExists())
     			{
     				bullet.remove();
     				bullet = null;
     				target.Break();
-    				break;
+    				return;
     			}
-    			break;
     		}
-    		break;
     	}
     }
     

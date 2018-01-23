@@ -15,6 +15,7 @@ public class LgAsteroid extends MovingObject{
 	{
 		System.out.println("Break");
 		speed = 0;
+		setExists(false);
 		Board.Asteroids.remove(this);
 		Board.Asteroids.add(new MedAsteroid(this.getX(), this.getY()));
 		Board.Asteroids.add(new MedAsteroid(this.getX(), this.getY()));
