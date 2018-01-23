@@ -2,6 +2,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 
 public class GameDriver extends JFrame {
+	public static GameDriver ex;
 
     public GameDriver() {
         
@@ -25,7 +26,7 @@ public class GameDriver extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                GameDriver ex = new GameDriver();
+                ex = new GameDriver();
                 ex.setVisible(true);
             }
         });

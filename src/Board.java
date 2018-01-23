@@ -192,5 +192,6 @@ public class Board extends JPanel implements ActionListener {
     			}
     		}
     	}
+    	GameDriver.ex.setTitle("Asteroids \tWave: " + wave + "\tPoints: " + score);
     }
 }

@@ -5,7 +5,7 @@ import javax.swing.ImageIcon;
 
 public class Projectile extends MovingObject
 {
-	private long time = System.currentTimeMillis();
+	public long time = System.currentTimeMillis();
 	private long existenceLength;
 	public static int size = 6;
 	Image image = new ImageIcon("Images/Ship/Projectile.png").getImage();
