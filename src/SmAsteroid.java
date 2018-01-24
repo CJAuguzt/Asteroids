@@ -7,7 +7,7 @@ public class SmAsteroid extends MovingObject{
 	
 	public SmAsteroid(int x, int y)
 	{
-		super(x, y, 3, 360 * (int) Math.random());
+		super(x, y, 4, (int)(360 * Math.random()));
 		}
 
 	//Deletes SmAsteroid object and increases score

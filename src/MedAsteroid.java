@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 public class MedAsteroid extends MovingObject{
 	public static int size = 32;
 	public MedAsteroid(int x, int y) {
-		super(x, y, 3, 360 * (int) Math.random());
+		super(x, y, 3, (int)(360 * Math.random()));
 		}
 	
 	//Deletes MedAsteroid object and replaces it with two SmAsteroid objects
