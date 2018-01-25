@@ -13,6 +13,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -29,6 +30,7 @@ public class Board extends JPanel implements ActionListener {
 	public static ArrayList<Projectile> Projectiles = new ArrayList<Projectile>();
 	private Timer timer;
     static Ship player;
+    public Image background = new ImageIcon("Images/menu/background.png").getImage();
     
     public Board() {
         initBoard();
@@ -50,6 +52,7 @@ public class Board extends JPanel implements ActionListener {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        g.drawImage(background,0,0,1920,1080, null);
         doDrawing(g);
 
         Toolkit.getDefaultToolkit().sync();
