@@ -13,7 +13,6 @@ public class Projectile extends MovingObject
 		super(x, y, 6, direction);
 		this.size = 6;
 	}
-	
 	//Moves projectile based on angle
 	public void move()
     {
@@ -22,13 +21,14 @@ public class Projectile extends MovingObject
         wrap();
     }
 	
-	//Deletes projectile after 2 seconds
+
 	public void setCollided(int num) {
 		this.collided = -1;
 	}
+	//Deletes projectile after 2 seconds and checks if the projectile collided with asteroid
 	public void remove()
 	{
-		if ((System.currentTimeMillis() - time) >= 1000)
+		if ((System.currentTimeMillis() - time) >= 1500)
 		{
 			this.setExists(false);
 		

@@ -28,6 +28,7 @@ public class KeyBinding extends KeyAdapter {
         }
     }
 	
+	
 	public void keyReleased(KeyEvent e) {
 		//Decreases speed of ship
         int key = e.getKeyCode();

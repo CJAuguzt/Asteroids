@@ -32,7 +32,7 @@ public class Board extends JPanel implements ActionListener {
     
     public Board() {
         initBoard();
-    }
+        }
     
     //Sets up JPanel object
     private void initBoard() {
@@ -44,6 +44,8 @@ public class Board extends JPanel implements ActionListener {
         timer = new Timer(DELAY, this);
         timer.start();
     }
+    
+    
 
     @Override
     public void paintComponent(Graphics g) {
@@ -73,19 +75,23 @@ public class Board extends JPanel implements ActionListener {
         	}
         }
         //Displays score and remaining lives
+        String scores = "Score: " + score;
+        String lives = "Lives: " + livesRemaining;
+        Font small = new Font("Helvetica", Font.BOLD, 18);
         g.setColor(Color.WHITE);
-        g.drawString("Score: " + score, 15, 15);
-        g.drawString("Lives: " + livesRemaining, 15, 30);
+        g.setFont(small);
+        g.drawString(scores, 15, 25);
+        g.drawString(lives, 15, 45);
         
         //Displays game over message on player death
         if(!inGame)
         {
         	String msg = "Game Over";
-            Font small = new Font("Helvetica", Font.BOLD, 14);
-            FontMetrics fm = getFontMetrics(small);
+            Font medium = new Font("Helvetica", Font.BOLD, 28);
+            FontMetrics fm = getFontMetrics(medium);
 
             g.setColor(Color.white);
-            g.setFont(small);
+            g.setFont(medium);
             g.drawString(msg, (1920 - fm.stringWidth(msg)) / 2, 1080 / 2);
             livesRemaining = -1;
         }
