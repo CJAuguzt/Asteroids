@@ -140,6 +140,7 @@ public class Board extends JPanel implements ActionListener {
     		{
     			if(target.getBounds().intersects(bullet.getBounds()) && target.getExists() && bullet.getExists())
     			{
+    				bullet.setCollided(-1);
     				bullet.remove();
     				bullet = null;
     				target.Break();
