@@ -7,7 +7,7 @@ public class LgAsteroid extends MovingObject{
 	public LgAsteroid()
 	{
 		super((int) (Math.random() * 1920), (int) (Math.random() * 1080), 2, (int) (Math.random() * 360));
-		size = 48;
+		size = 96;
 	}
 	
 	//Deletes LgAsteroid object and replaces it with two MedAsteroid objects

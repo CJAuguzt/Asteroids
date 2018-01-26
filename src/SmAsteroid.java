@@ -3,7 +3,7 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 public class SmAsteroid extends MovingObject{
-	public static int size = 16;
+	public static int size = 32;
 	
 	public SmAsteroid(int x, int y)
 	{

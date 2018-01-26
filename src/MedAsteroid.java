@@ -4,7 +4,7 @@ import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
 public class MedAsteroid extends MovingObject{
-	public static int size = 32;
+	public static int size = 64;
 	public MedAsteroid(int x, int y) {
 		super(x, y, 3, (int)(360 * Math.random()));
 		}

@@ -10,7 +10,7 @@ public class Projectile extends MovingObject
 	Image image = new ImageIcon("Images/Ship/Projectile.png").getImage();
 	private int collided = 0; 
 	public Projectile(int x, int y, int direction) {
-		super(x, y, 6, direction);
+		super(x, y, 10, direction);
 		this.size = 6;
 	}
 	//Moves projectile based on angle
@@ -28,7 +28,7 @@ public class Projectile extends MovingObject
 	//Deletes projectile after 2 seconds and checks if the projectile collided with asteroid
 	public void remove()
 	{
-		if ((System.currentTimeMillis() - time) >= 1500)
+		if ((System.currentTimeMillis() - time) >= 1000)
 		{
 			this.setExists(false);
 		
